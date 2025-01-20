@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پروژه با دکمه‌ها</title>
+    <style>
+        @font-face {
+            font-family: 'Kalameh';
+            src: url('https://raw.githubusercontent.com/dachnima/limo.github.io/main/Vazirmatn-Medium.ttf') format('truetype');
+        }
+
+        @font-face {
+            font-family: 'Kalameh2';
+            src: url('https://raw.githubusercontent.com/dachnima/limo.github.io/main/Vazirmatn-Regular.ttf') format('truetype');
+        }
+
+        body {
+            background-color: #1b1b1f;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #222227;
+            border: rgba(255, 255, 255, 0.137) solid 1px;
+            color: white;
+            margin-top: -1px;
+            height: 30px;
+            padding: 15px 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: Kalameh2;
+            z-index: 1000;
+        }
+
+        .header button {
+            background-color: #32353a;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 10px 20px;
+            font-family: Kalameh;
+            margin-left: 100px;
+            width: 200px;
+            height: 40px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .header button img {
+            width: 25px;
+            height: 25px;
+        }
+
+        .header button span {
+            display: inline-block;
+            margin-top: 5px; /* تنظیم موقعیت متن */
+        }
+
+        .header button:hover {
+            background-color: #3a3d42;
+        }
+
+        .header nav {
+            display: flex;
+            gap: 15px;
+            margin-right: 100px;
+        }
+
+        .header a {
+            text-decoration: none;
+            color: white;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        .header a:hover {
+            color: #6a5acd;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            margin-top: 150px;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-family: Kalameh;
+            width: 180px;
+            height: 60px;
+            transition: all 0.3s ease;
+        }
+
+        .blue-purple {
+            background-color: #6a5acd;
+            color: white;
+        }
+
+        .dark-gray {
+            background-color: #2e2e2e;
+            color: white;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+        .description {
+            text-align: center;
+            font-size: 14px;
+            font-family: Kalameh;
+            line-height: 1.6;
+            margin-top: -5px;
+            max-width: 600px;
+        }
+
+        .highlight {
+            color: #6a5acd;
+            text-decoration: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- نوار بالای صفحه -->
+    <div class="header">
+        <button>
+            <img src="Picture/gh.png" alt="GitHub Logo">
+            <span>Vanco on Github</span>
+        </button>
+        <nav>
+            <a href="#section1">آموزشات</a>
+            <a href="#section2">حمایت مالی</a>
+            <a href="#section3">صفحه اصلی</a>
+        </nav>
+    </div>
+
+    <!-- دکمه‌ها -->
+    <div class="button-container">
+        <button class="dark-gray">لیست نسخه</button>
+        <button class="blue-purple">دانلود برنامه</button>
+    </div>
+
+    <!-- توضیحات -->
+    <p class="description">
+        لطفا برای مشاهده‌ی آپدیت‌های برنامه 
+        <span class="highlight">کلیک کنید</span> و لذت ببرید
+    </p>
+</body>
+</html>
