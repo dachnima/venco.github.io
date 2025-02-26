@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>باشگاه کارون اهواز - ثبت نام</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap');
+
+        @font-face {
+            font-family: 'st';
+            src: url('https://raw.githubusercontent.com/dachnima/limo.github.io/main/Vazirmatn-Medium.ttf') format('truetype');
+        }
+
+        @font-face {
+            font-family: 'sb';
+            src: url('https://raw.githubusercontent.com/dachnima/limo.github.io/main/Vazirmatn-Black.ttf') format('truetype');
+        }
+
+        body {
+            background-color: white;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Vazirmatn', sans-serif;
+        }
+
+        .header {
+            width: 50%;
+            height: 60px;
+            position: fixed;
+            top: 30px;
+            left: 25%;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            border: 1px solid #18181817;
+        }
+
+        .header-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #181818;
+            font-family: sb;
+        }
+
+        .header-links a {
+            text-decoration: none;
+            color: #181818;
+            font-family: st;
+            font-size: 16px;
+            margin-left: 20px;
+        }
+
+        .header-links a:hover {
+            color: #ff4757;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #181818;
+            margin-bottom: 10px;
+            font-family: sb;
+            text-align: center;
+        }
+
+        p {
+            font-size: 14px;
+            color: #3a3a3a;
+            text-align: center;
+            margin-top: -10px;
+            font-family: st;
+        }
+
+        input {
+            width: 270px;
+            height: 35px;
+            text-align: center;
+            font-size: 16px;
+            font-family: 'Vazirmatn', sans-serif;
+            border: 1px solid #33333338;
+            border-radius: 10px;
+            outline: none;
+            direction: ltr;
+            margin-bottom: 10px;
+            transition: border-color 0.3s ease;
+            display: block;
+        }
+
+        input:focus {
+            border-color: #181818af;
+        }
+
+        button {
+            margin-top: -2px;
+            width: 270px;
+            height: 35px;
+            background-color: #1d1d1d;
+            color: white;
+            font-size: 18px;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            font-family: 'Vazirmatn', sans-serif;
+        }
+
+        button:hover {
+            background-color: #0a0a0a;
+        }
+
+        .error-message {
+            min-height: 20px;
+            color: red;
+            text-align: center;
+            font-size: 16px;
+            margin-top: -8px;
+            font-family: st;
+            visibility: hidden;
+        }
+
+        .success-message {
+            min-height: 20px;
+            color: green;
+            text-align: center;
+            font-size: 16px;
+            margin-top: -40px;
+            font-family: st;
+            visibility: hidden;
+        }
+
+        .input-container {
+            text-align: center;
+        }
+
+        #register-link {
+            font-size: 14px;
+            font-family: 'Vazirmatn', sans-serif;
+            color: #007bff;
+            cursor: pointer;
+            text-align: center;
+            margin-top: 10px;
+            text-decoration: none;
+        }
+
+        #register-link:hover {
+            text-decoration: underline;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="header-title">باشگاه کارون اهواز</div>
+        <div class="header-links">
+            <a href="karoon-home.html">صفحه اصلی</a>
+            <a href="#about">فروشگاه</a>
+            <a href="karoon-archive.html">تماس با ما</a>
+            <a href="karoon.html">ثبت نام</a>
+        </div>
+    </div>
+
+    <h1 id="step-message">به حساب کاربری خودتون وارد شوید</h1>
+    <p id="description">اگر شما از قبل حساب کاربری ساخته‌اید میتوانید وارد شوید</p>
+
+    <div class="input-container">
+        <input type="text" id="fullname" class="hidden" placeholder="نام و نام خانوادگی">
+        <input type="text" id="phone" placeholder="شماره تلفن خود را وارد کنید" maxlength="11">
+        <input type="password" id="password" placeholder="رمز عبور خود را وارد کنید">
+        <input type="password" id="confirm-password" class="hidden" placeholder="تکرار رمز عبور">
+    </div>
+
+    <button id="action-button" onclick="validateForm()">ورود به حساب</button>
+
+    <p id="register-link" onclick="switchToRegister()">آیا حساب کاربری ندارید؟ همین الان بسازید</p>
+
+    <p id="error-message" class="error-message">!لطفا تمامی فیلد هارو پر کنید</p>
+    <p id="success-message" class="success-message">ثبت نام با موفقیت انجام شد</p>
+
+    <script>
+        let isRegistering = false;
+
+        function switchToRegister() {
+            const stepMessage = document.getElementById('step-message');
+            const description = document.getElementById('description');
+            const registerLink = document.getElementById('register-link');
+            const phoneInput = document.getElementById('phone');
+            const passwordInput = document.getElementById('password');
+            const fullnameInput = document.getElementById('fullname');
+            const confirmPasswordInput = document.getElementById('confirm-password');
+            const actionButton = document.getElementById('action-button');
+
+            if (!isRegistering) {
+                stepMessage.textContent = 'همین الان یک حساب کاربری بسازید';
+                description.textContent = 'اگر شما حساب کاربری ندارید همین الان میتوانید بسازید';
+                registerLink.textContent = 'آیا از قبل حساب کاربری دارید؟ همین الان وارد شوید';
+
+                fullnameInput.classList.remove('hidden');
+                confirmPasswordInput.classList.remove('hidden');
+
+                phoneInput.placeholder = "شماره تلفن";
+                passwordInput.placeholder = "رمز عبور";
+                actionButton.textContent = "ثبت نام";
+
+            } else {
+                stepMessage.textContent = 'به حساب کاربری خودتون وارد شوید';
+                description.textContent = 'اگر شما از قبل حساب کاربری ساخته‌اید میتوانید وارد شوید';
+                registerLink.textContent = 'آیا حساب کاربری ندارید؟ همین الان بسازید';
+
+                fullnameInput.classList.add('hidden');
+                confirmPasswordInput.classList.add('hidden');
+
+                phoneInput.placeholder = "شماره تلفن خود را وارد کنید";
+                passwordInput.placeholder = "رمز عبور خود را وارد کنید";
+                actionButton.textContent = "ورود به حساب";
+            }
+
+            isRegistering = !isRegistering;
+        }
+
+        function validateForm() {
+            const phoneInput = document.getElementById('phone').value;
+            const passwordInput = document.getElementById('password').value;
+            const confirmPasswordInput = document.getElementById('confirm-password').value;
+            const fullnameInput = document.getElementById('fullname').value;
+            const errorMessage = document.getElementById('error-message');
+            const successMessage = document.getElementById('success-message');
+
+            // بررسی طول شماره تلفن
+            if (phoneInput.length < 11) {
+                errorMessage.textContent = 'شماره تلفن شما اشتباه میباشد';
+                errorMessage.style.visibility = 'visible';
+                successMessage.style.visibility = 'hidden';
+                return false;
+            }
+
+            // بررسی دیگر فیلدها
+            if (!phoneInput || !passwordInput || (isRegistering && (!confirmPasswordInput || !fullnameInput))) {
+                errorMessage.style.visibility = 'visible';
+                successMessage.style.visibility = 'hidden';
+                return false;
+            } else if (isRegistering && passwordInput !== confirmPasswordInput) {
+                errorMessage.textContent = '!رمز عبور یکسان نیست';
+                errorMessage.style.visibility = 'visible';
+                successMessage.style.visibility = 'hidden';
+                return false;
+            } else {
+                errorMessage.style.visibility = 'hidden';
+                successMessage.style.visibility = 'visible';
+                // Show success message and redirect after 3 seconds
+                setTimeout(function() {
+                    window.location.href = 'karoon-home.html';  // تغییر مسیر به صفحه جدید
+                }, 1000);
+            }
+        }
+    </script>
+
+</body>
+</html>

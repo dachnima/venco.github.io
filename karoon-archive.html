@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>باشگاه کارون اهواز - آرشیو</title>
+    <style>
+
+        @font-face {
+            font-family: 'sb';
+            src: url('https://raw.githubusercontent.com/dachnima/limo.github.io/main/Vazirmatn-Black.ttf') format('truetype');
+        }
+        @font-face {
+            font-family: 'st';
+            src: url('https://raw.githubusercontent.com/dachnima/limo.github.io/main/Vazirmatn-Medium.ttf') format('truetype');
+        }
+
+        body {
+            background-color: white;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        .header {
+            width: 50%;
+            height: 60px;
+            position: fixed;
+            top: 30px;
+            left: 25%;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            border: 1px solid #18181817;
+        }
+
+        .header-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #181818;
+            font-family: sb;
+        }
+
+        .header-links a {
+            text-decoration: none;
+            color: #181818;
+            font-family: st;
+            font-size: 16px;
+            margin-left: 20px;
+        }
+
+        .header-links a:hover {
+            color: #ff4757;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            width: 80%;
+            margin-right: 260px; /* اضافه شد تا تصاویر زیر هدر قرار بگیرند */
+            max-width: 1200px;
+        }
+
+        .gallery img {
+            width: 350px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        /* لایت‌باکس برای نمایش تصویر بزرگ */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .lightbox img {
+            max-width: 50%;
+            max-height: 50%;
+            border-radius: 30px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="header-title">باشگاه کارون اهواز</div>
+        <div class="header-links">
+            <a href="karoon-home.html">صفحه اصلی</a>
+            <a href="#about">فروشگاه</a>
+            <a href="#home">تماس با ما</a>
+            <a href="#home">آرشیو</a>
+            <a href="karoon.html">ثبت نام</a>
+        </div>
+    </div>
+
+    <div class="gallery">
+        <img src="Picture/bg.png" alt="Image 1" onclick="openLightbox(this.src)">
+        <img src="Picture/bg.png" alt="Image 2" onclick="openLightbox(this.src)">
+        <img src="Picture/bg.png" alt="Image 3" onclick="openLightbox(this.src)">
+        <img src="Picture/bg.png" alt="Image 4" onclick="openLightbox(this.src)">
+        <img src="Picture/bg.png" alt="Image 5" onclick="openLightbox(this.src)">
+        <img src="Picture/bg.png" alt="Image 6" onclick="openLightbox(this.src)">
+        <img src="Picture/bg.png" alt="Image 7" onclick="openLightbox(this.src)">
+        <img src="Picture/bg.png" alt="Image 8" onclick="openLightbox(this.src)">
+    </div>
+
+    <!-- لایت‌باکس برای نمایش تصویر -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Large Image">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            document.getElementById('lightbox-img').src = src;
+            document.getElementById('lightbox').style.display = 'flex';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>

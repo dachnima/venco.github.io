@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>باشگاه کارون اهواز - صفحه اصلی</title>
+    <style>
+        @font-face {
+            font-family: 'sb';
+            src: url('https://raw.githubusercontent.com/dachnima/limo.github.io/main/Vazirmatn-Black.ttf') format('truetype');
+        }
+        @font-face {
+            font-family: 'st';
+            src: url('https://raw.githubusercontent.com/dachnima/limo.github.io/main/Vazirmatn-Medium.ttf') format('truetype');
+        }
+
+        body {
+            background-color: white;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            flex-direction: column;
+        }
+
+        /* استایل هدر با افکت بلور */
+        .header {
+            width: 50%;
+            height: 60px;
+            position: fixed;
+            top: 30px;
+            left: 25%;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            border: 1px solid #18181817;
+        }
+
+        .header-button {
+            font-size: 15px;
+            color: #ffffff;
+            font-family: st;
+            text-decoration: none;
+            background-color: #181818;
+            padding: 10px 20px;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .header-button:hover {
+            background-color: #0c0c0c;
+        }
+
+        .header-links a {
+            text-decoration: none;
+            color: #181818;
+            font-family: st;
+            font-size: 16px;
+            margin-left: 20px;
+        }
+
+        .header-links a:hover {
+            color: #ff4757;
+        }
+
+        .container {
+            position: absolute;
+            top: 30%;
+            right: 20%;
+            text-align: right;
+        }
+
+        .title {
+            font-size: 26px;
+            font-weight: bold;
+            color: #181818;
+            margin-right: 45px;
+            font-family: sb;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #3a3a3a;
+            margin-right: 45px;
+            font-family: st;
+        }
+
+        .video-container {
+            position: absolute;
+            left: 25%;
+            top: 29%;
+            width: 450px; /* عرض ویدیو */
+            height: 250px; /* ارتفاع ویدیو */
+        }
+
+        .video-container iframe {
+            width: 110%;
+            height: 100%;
+            border-radius: 20px;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- هدر با افکت بلور -->
+    <div class="header">
+        <a href="karoon.html" class="header-button">ثبت نام / ورود</a>
+        <div class="header-links">
+            <a href="#home">صفحه اصلی</a>
+            <a href="#about">فروشگاه</a>
+            <a href="#home">تماس با ما</a>
+            <a href="karoon-archive.html">آرشیو</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="title">!به باشگاه کارون اهواز خوش آمدید</div>
+        <div class="subtitle">
+            این باشگاه واقع در شهر اهواز است که بهترین تجربه<br>
+            فوتبال رو در این باشگاه داشته باشید. فعالیت این<br>
+            باشگاه از سال 92 شروع شد و درحال حاضر بیش از<br>
+            صد و پنجاه نفر فوتبالیست جوان دارد. برای آشنایی<br>
+            بیشتر با باشگاه میتوانید ویدیو روبه‌رو را ببینید
+            و برای<br>
+            اطلاعات بیشتر لطفا به پایین اسکرول کنید
+        </div>
+    </div>
+
+    <div class="video-container">
+        <iframe src="https://www.aparat.com/video/video/embed/videohash/nygz948/vt/frame" 
+        allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
+    </div>
+
+</body>
+</html>
